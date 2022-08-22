@@ -1,0 +1,104 @@
+﻿@{
+    ViewData["Title"] = "Ventas";
+}
+@model GYF_Stock_Management.DTO.ProductsSaleDTO
+<h1>@ViewData["Title"]</h1>
+<p>En esta página podrá buscar los productos más adecuados para el cliente según su presupuesto </p>
+
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="ListProducts">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Budget" class="control-label">Presupuesto</label>
+                <input asp-for="Budget" class="form-control" />
+                <span asp-validation-for="Budget" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Consultar" class="btn btn-outline-success" />
+            </div>
+        </form>
+    </div>
+</div>
+<div class="row" style="padding-bottom: 0px;">
+    <div class="col-12">
+        <div class="ibox float-e-margins">
+            <div class="table-responsive m-t">
+            @if (Model != null)
+            {
+                <table class="table table-striped table-bordered table-hover dataTables-example">
+                    <thead>
+                        <tr>
+                            <th class="tabla-Style-bot">
+                                ID
+                            </th>
+                            <th class="tabla-Style-bot">
+                                Precio
+                            </th>
+                            <th class="tabla-Style-bot">
+                                Fecha de carga
+                            </th>
+                            <th class="tabla-Style-bot">
+                                Categoria
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="tabla-Style-top tabla-Style-bot" style="text-align:left;">
+                                @Html.DisplayFor(model => model.ProductA)
+                            </td>
+                            <td class="tabla-Style-top tabla-Style-bot" style="text-align:left;">
+                                @Html.DisplayFor(model => model.PriceA)
+                            </td>
+                            <td class="tabla-Style-top tabla-Style-bot" style="text-align:left;">
+                                @Html.DisplayFor(model => model.UploadDateA)
+                            </td>
+                            <td class="tabla-Style-top tabla-Style-bot" style="text-align:left;">
+                                @Html.DisplayFor(model => model.CategoryA)
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="tabla-Style-top tabla-Style-bot" style="text-align:left;">
+                                @Html.DisplayFor(model => model.ProductB)
+                            </td>
+                            <td class="tabla-Style-top tabla-Style-bot" style="text-align:left;">
+                                @Html.DisplayFor(model => model.PriceB)
+                            </td>
+                            <td class="tabla-Style-top tabla-Style-bot" style="text-align:left;">
+                                @Html.DisplayFor(model => model.UploadDateB)
+                            </td>
+                            <td class="tabla-Style-top tabla-Style-bot" style="text-align:left;">
+                                @Html.DisplayFor(model => model.CategoryB)
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="tabla-Style-top tabla-Style-bot" style="text-align:left;">
+                                <h5>TOTAL</h5>
+                            </td>
+                            <td class="tabla-Style-top tabla-Style-bot" style="text-align:left;">
+                                @Html.DisplayFor(model => model.Total)
+                            </td>
+                            <td class="tabla-Style-top tabla-Style-bot" style="text-align:left;">
+                               
+                            </td>
+                            <td class="tabla-Style-top tabla-Style-bot" style="text-align:left;">
+                               
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            }
+            else
+            {
+                <h3>No se encontraron resultados</h3>
+            }
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+
+
